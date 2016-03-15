@@ -290,12 +290,6 @@ alloc_pt mem_new_alloc(pool_pt pool, size_t size) {
         }
     };
 
-    if(size == 350){
-        for(int i=0; i<pool_mgr->gap_ix_capacity-1;i++){
-            printf("%i - size of gap node %zu\n", i, pool_mgr->gap_ix[i].size);
-        }
-    }
-
     // check if node found
     if (alloc_node == NULL) {
         return NULL;
@@ -583,6 +577,7 @@ static alloc_status _mem_add_to_gap_ix(pool_mgr_pt pool_mgr,
 static alloc_status _mem_remove_from_gap_ix(pool_mgr_pt pool_mgr,
                                             size_t size,
                                             node_pt node) {
+
     // find the position of the node in the gap index
     int position;
     for(int i=0; i < pool_mgr->pool.num_gaps - 1; i++){
